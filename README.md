@@ -8,5 +8,5 @@ useful Personal scripts handmade with love
 
 - use the following commands:
     `chmod u+x install.sh`
-- then run script using sudo privileges
-    `sudo "$(pwd)/install.sh"
+- then run script using `sudo` privileges:
+    `sudo ./install.sh`

@@ -10,13 +10,32 @@ scripts="$(ls src)"
 cur_dir_path="$(pwd)/src/"
 
 for i in ${scripts}; do
-  cur_file="${cur_dir_path}${i}"
-  linkin_file="${bin_path}${i//[.sh]+/}"
-
-  echo "Make $i excutable..."
-  sudo chmod u+x "$cur_file"
-  echo "Link $cur_file -to-> $linkin_file"
-  sudo ln -s "$cur_file" "$linkin_file"
+    cur_file="${cur_dir_path}${i}"
+    linkin_file="${bin_path}${i//[.sh]+/}"
+    echo; sleep .1; 
+    if [ $( 
+        if [ $(sudo chmod u+x "$cur_file") ]; then 
+            echo "Make \"$i\" Excutable..."
+        fi && 
+        if [ $(sudo ln -s "$cur_file" "$linkin_file") ]; then
+            echo "Link \"$cur_file\" --> \"$linkin_file\""
+        fi
+        ) ]; then echo "Successfually."
+    else
+        echo "Error, Somthing wrong";
+        exit 1
+    fi
 done
+echo "Scripts installed now on your System ;)"
 
-echo "scripts now installed on your system ;)"
+# Error handdling 
+# { #try
+# } || { # catch
+# link fixes
+    # sudo rm /usr/local/bin/newc; sudo rm /usr/local/bin/testc;
+# }
+
+# log system
+
+
+######
