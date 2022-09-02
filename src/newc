@@ -4,7 +4,7 @@
 
 read -p "Problem Name: " name
 new_file_name="${name////$'-'}.cpp"
-cpp_template_path="/home/modsyan/ProblemSolving/template.cpp";
+cpp_template_path="./templates/cpp_template.cpp";
 js_template_path=""
 
 if [ -f "$new_file_name" ]; then
