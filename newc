@@ -1,1 +1,16 @@
-/usr/local/bin/newc
+#!/bin/bash
+
+# n c p f stands for new cpp problem file
+
+read -p "Problem Name: " name
+new_file_name="${name////$'-'}.cpp"
+template_file_path="/home/modsyan/ProblemSolving/template.cpp";
+
+if [ -f "$new_file_name" ]; then
+    echo "Error, File is Already Exsist!"
+else
+    echo "Successfually -: File has been created"
+    echo "File Problem Name: ${new_file_name}"
+    cp ${template_file_path} "${new_file_name}";
+    code "${new_file_name}";
+fi
