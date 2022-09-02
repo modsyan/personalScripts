@@ -4,13 +4,16 @@
 
 read -p "Problem Name: " name
 new_file_name="${name////$'-'}.cpp"
-template_file_path="/home/modsyan/ProblemSolving/template.cpp";
+cpp_template_path="/home/modsyan/ProblemSolving/template.cpp";
+js_template_path=""
 
 if [ -f "$new_file_name" ]; then
     echo "Error, File is Already Exsist!"
-else
-    echo "Successfually -: File has been created"
-    echo "File Problem Name: ${new_file_name}"
-    cp ${template_file_path} "${new_file_name}";
-    code "${new_file_name}";
+    exit 1
 fi
+
+echo "Successfually -: File has been created"
+echo
+echo "File Problem Name: ${new_file_name}"
+cp ${cpp_template_path} "${new_file_name}";
+code "${new_file_name}";
